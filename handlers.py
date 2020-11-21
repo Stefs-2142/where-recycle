@@ -19,8 +19,8 @@ def greet_user(update, context):
 
 def get_location(update, context):
 
-    loccation = update.message.location
-    update.message.reply_text(f'Caught you! {loccation}')
+    location = update.message.location
+    update.message.reply_text(f'Caught you! {location}')
 
     context.user_data['user_id'] = [update.effective_user.id]
     context.user_data['location'] = [update.message.location]
