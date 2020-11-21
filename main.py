@@ -8,7 +8,7 @@ from telegram.ext import (Updater, CommandHandler,
 
 from settings import TELEGRAM_API_KEY
 
-from handlers import greet_user, users_coordinates
+from handlers import greet_user, get_location
 
 logging.basicConfig(filename='bot.log', level=logging.INFO,
                     format='%(asctime)s.%(msecs)03d %(levelname)s %(module)s - %(funcName)s: %(message)s',
@@ -21,11 +21,11 @@ def main():
     bot = telegram.Bot(TELEGRAM_API_KEY, request=request)
 
     wr_bot = Updater(bot=bot, use_context=True)
-
     dp = wr_bot.dispatcher
 
     dp.add_handler(CommandHandler("start", greet_user))
-    dp.add_handler(CommandHandler("location", users_coordinates))
+    dp.add_handler(MessageHandler(Filters.location, get_location))
+
 
     logging.info('Бот стартовал')
 

@@ -1,5 +1,4 @@
 from telegram import ParseMode
-
 from keyboards import main_menu_keyboard
 
 
@@ -18,10 +17,10 @@ def greet_user(update, context):
         parse_mode=ParseMode.HTML)
 
 
-def users_coordinates(update, context):
-    location = update.message.location
-    print(location)
-    update.message.reply_text(
-        "Ваши координаты !",
-        reply_markup=main_menu_keyboard()
-    )
+def get_location(update, context):
+
+    loccation = update.message.location
+    update.message.reply_text(f'Caught you! {loccation}')
+
+    context.user_data['user_id'] = [update.effective_user.id]
+    context.user_data['location'] = [update.message.location]
