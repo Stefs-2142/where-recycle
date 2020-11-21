@@ -26,7 +26,6 @@ def main():
     dp.add_handler(CommandHandler("start", greet_user))
     dp.add_handler(MessageHandler(Filters.location, get_location))
 
-
     logging.info('Бот стартовал')
 
     wr_bot.start_polling()

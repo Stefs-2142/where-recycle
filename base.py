@@ -11,6 +11,3 @@ Session = sessionmaker(bind=Engine)
 session = Session()
 
 Base = declarative_base()
-
-
-
