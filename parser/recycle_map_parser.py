@@ -56,7 +56,6 @@ def get_content(html):
         hours = hours.find_all('a', attrs={'class': 'ico1'})
         working_hours['Время работы'] = hours
 
-    print("------------------------------------")
     print("TITLE:", location_name)
     print("IMAGE", image_url)
     print("WORKING HOURS:", working_hours)

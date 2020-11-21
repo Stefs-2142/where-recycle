@@ -1,10 +1,15 @@
+/venv
+.idea/
+parser/output1.html
+
+
 # Project-related stuff
 settings.py
 bot.log
 gists.py
 *backup.py
 db_utils.py
-.idea/
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
