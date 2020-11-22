@@ -4,6 +4,7 @@ bot.log
 gists.py
 *backup.py
 db_utils.py
+setup_db.py
 
 
 # Byte-compiled / optimized / DLL files
