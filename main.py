@@ -8,7 +8,9 @@ from telegram.ext import (Updater, CommandHandler,
 
 from settings import TELEGRAM_API_KEY
 
-from handlers import greet_user, get_location
+from handlers import greet_user, unknown_text, get_my_stat
+
+from conversations import point
 
 logging.basicConfig(filename='bot.log', level=logging.INFO,
                     format='%(asctime)s.%(msecs)03d %(levelname)s %(module)s - %(funcName)s: %(message)s',
@@ -24,7 +26,9 @@ def main():
     dp = wr_bot.dispatcher
 
     dp.add_handler(CommandHandler("start", greet_user))
-    dp.add_handler(MessageHandler(Filters.location, get_location))
+    dp.add_handler(point)
+    dp.add_handler(MessageHandler(Filters.regex('^Мои баллы 📝'), get_my_stat))
+    dp.add_handler(MessageHandler(Filters.text, unknown_text))
 
 
     logging.info('Бот стартовал')
