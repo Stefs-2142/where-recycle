@@ -109,7 +109,7 @@ def get_my_stat(update, context):
     message = 'На Вашем счету:\n'
     for data in user_data:
         message += f'Green Points-{data[0]}\n'
-        message += f'Green Tickets-{data[1]}'
+        message += f'Доступно билетов-{data[1]}'
     update.message.reply_text(
         message, reply_markup=main_menu_keyboard()
         )
