@@ -32,10 +32,13 @@ class User(Base):
             session.rollback()
             return False
 
-    def add_points(self, item_id):
+    def add_points(self, user_id, item_id):
         """
-        Дабавляем бонусы за переработку/утилизация.
+        Дабавляем бонусы за переработку/утилизация
+        Если ранее пользователь не пользовался приложением
+        он заносится в БД.
         """
+        user_id = session.query(User).filter(User.user_id == user_id).all()
         item_green_point = 12.5
         User.green_points += item_green_point
         try:
