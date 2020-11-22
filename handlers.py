@@ -6,6 +6,8 @@ from keyboards import TRASH_TYPES, cancel_keyboard, location_keyboard
 
 from models import User
 
+from directions import get_simple_url
+
 
 def greet_user(update, context):
 
@@ -38,7 +40,7 @@ def get_location(update, context):
     text = update.message.text
     if text in TRASH_TYPES:
         update.message.reply_text(
-            'Сейчас покажу что рядом. Только мне нужно узнать где ты находишся.',
+            'Сейчас покажу что рядом, только мне нужно узнать где ты находишься.',
             reply_markup=location_keyboard())
 
         user_id = update.effective_user.id
@@ -47,7 +49,7 @@ def get_location(update, context):
     else:
         update.message.reply_text(
             """
-            Если Вашей категории нет - обратитесь пожалуйста к админам.\n
+            Если Вашей категории нет - обратитесь, пожалуйста, к админам.\n
             https://t.me/Stefs""", reply_markup=main_menu_keyboard())
         return ConversationHandler.END
 
@@ -59,7 +61,9 @@ def get_route(update, context):
     location = update.message.location
     if location is not None:
         context.user_data['location'] = update.message.location
-        update.message.reply_text(f'Caught you! {location}', reply_markup=main_menu_keyboard())
+        url = get_simple_url()
+        update.message.reply_text(f'Прокладываю маршрут! {url}', reply_markup=main_menu_keyboard())
+
         return ConversationHandler.END
     else:
         update.message.reply_text(

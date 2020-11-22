@@ -1,6 +1,6 @@
 from telegram import ReplyKeyboardMarkup, KeyboardButton
 
-TRASH_TYPES = ['🥤', '📚', '👖', '🧪']
+TRASH_TYPES = ['🥤', '📚', '👖', '🔋']
 
 
 def location_button():
